@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" role="application">
+    <header>
+      <h1>Expense Tracker</h1>
+      <div class="small">Built with HTML, CSS, JavaScript • Local Storage</div>
+    </header>
+
+    <div class="left">
+      <div class="balance-card" aria-live="polite">
+        <div class="small">Current Balance</div>
+        <div id="balance" class="balance-amount">₹0.00</div>
+        <div class="small" id="income-expense">Income: ₹0.00 • Expense: ₹0.00</div>
+      </div>
+
+      <div class="balance-card">
+        <div class="small">Add New Transaction</div>
+        <form id="transaction-form" novalidate>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g., Groceries, Salary" required />
+          </div>
+          <div>
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" name="amount" placeholder="e.g., 1500" step="0.01" required />
+          </div>
+          <div>
+            <label>Type</label>
+            <div class="radios">
+              <label><input type="radio" name="type" value="income" checked> Income</label>
+              <label><input type="radio" name="type" value="expense"> Expense</label>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:8px">
+            <button class="btn" type="submit" id="add-btn">Add Transaction</button>
+            <button type="button" id="clear-all" class="delete">Clear All</button>
+          </div>
+          <div id="message" aria-live="assertive" style="margin-top:8px"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="small">Transaction History</div>
+      <div class="history">
+        <ul id="transaction-list" aria-live="polite"></ul>
+      </div>
+    </div>
+
+    <footer>Transactions are stored locally in your browser. No data leaves your machine.</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
